@@ -1,0 +1,79 @@
+<style>
+body {
+	background-image: url("http://il2.picdn.net/shutterstock/videos/658531/thumb/1.jpg?i10c=img.resize(height:160");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+h1 {
+	text-align: center;
+	font-size: 32pt;
+}
+h2 {
+	font-size: 25pt;
+}
+#eaten {
+	float: right;
+}
+</style>
+
+<h1>Eat-Da-Burger!</h1>
+
+
+<div class="col-md-6 col-md-offset-1">
+  <h2 class="waiting">Burgers to eat</h2>
+  <ul class="uneaten">
+  
+    {{#each burgers}}
+      {{#unless this.devoured}}
+        <li>
+          <p>
+            {{this.burger_name}}
+          </p>
+          <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="true">
+            <button type="submit" class="btn btn-default" 
+            style="background-color:black; color:yellow; padding: 10px">Devour it!</button>
+          </form>
+        </li>
+      {{/unless}}
+    {{/each}}
+  </ul>
+</div>
+
+
+<div class="row">
+  <div class="col-md-2"></div>
+    <div class="col-md-4" id="update">
+      <br><br><br>
+        <form class="create-update-form" action="burgers/create" method="POST">
+          <h2 class="add-title">Add a Burger</h2>
+          <div class="form-group">
+            <label for="newBurger">Burger Name:</label>
+            <input type="hidden" name="devoured" value="0">
+            <input type="text" id="newBurger" name="burger_name">
+          <button type="submit" class="btn btn-default" style="background-color:black; color:yellow">Add Burger</button>
+        </form>
+      </div>
+    </div>
+
+
+
+<div class="col-md-6" id="eaten">
+  <br><br><br>
+    <h2 class="eaten-title">Eaten Burgers</h2>
+      <ul class="burgers-eaten">
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <li>
+              <p>{{this.burger_name}}</p>
+            </li>
+            <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+             <input type="hidden" name="devoured" value="false">
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+

@@ -11,3 +11,7 @@ CREATE TABLE burgers
     `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (id)
 );
+
+select * from burgers;
+
+DELETE FROM burgers WHERE id = 4;
