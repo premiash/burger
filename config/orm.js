@@ -16,7 +16,7 @@ function objToSql(ob){
   var arr = [];
 
   for (var key in ob) {
-    arr.push(key + '=' + ob[key]);
+    arr.push(key + '= ' + ob[key]);
   }
 
   return arr.toString();
@@ -48,7 +48,7 @@ var orm = {
   },
   // An example of objColVals would be {name: panther, sleepy: true}
   update: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table + ' SET ' + objToSql(objColVals) + 'WHERE ' + condition;
+    var queryString = "UPDATE " + table + ' SET ' + objToSql(objColVals) + ' WHERE ' + condition;
 
     console.log(queryString);
     connection.query(queryString, function(err, result) {
@@ -58,7 +58,7 @@ var orm = {
 
       cb(result);
     });
-  },
+  }
 
 };
 

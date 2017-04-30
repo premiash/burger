@@ -14,4 +14,7 @@ CREATE TABLE burgers
 
 select * from burgers;
 
-DELETE FROM burgers WHERE id = 4;
+DELETE FROM burgers WHERE id = 8;
+DELETE FROM burgers WHERE id = 9;
+DELETE FROM burgers WHERE id = 10;
+DELETE FROM burgers WHERE id = 11;
